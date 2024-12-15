@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickRent - Rent Gadgets Easily</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4CAF50, #3E8E41);
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        header nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        header .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        header .signup {
+            background: #fff;
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        header .signup:hover {
+            background: #f0f0f0;
+        }
+        
+        header .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #4CAF50;
+            padding: 1rem;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header .mobile-nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 0;
+        }
+
+        header .mobile-nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1rem;
+            background: url('https://images.wsj.net/im-519590/?width=700&height=467') no-repeat center/cover;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta-button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero .cta-button:hover {
+            background: #3E8E41;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature img {
+            width: 250px;
+            height: 200px;
+            margin-bottom: 1rem;
+            
+        }
+
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gadget-listing {
+            padding: 2rem;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .gadget-listing h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .gadget-listing .gadget {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+
+        .gadget-listing .gadget img {
+            width: 100px;
+            height: 100px;
+            margin-right: 1rem;
+        }
+
+        .gadget-listing .gadget h4 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .gadget-listing .gadget p {
+            margin: 0.5rem 0 0;
+        }
+
+        .plan-comparison {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .plan-comparison table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .plan-comparison table, .plan-comparison th, .plan-comparison td {
+            border: 1px solid #ddd;
+        }
+
+        .plan-comparison th, .plan-comparison td {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .plan-comparison th {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .contact {
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact form input, .contact form textarea, .contact form button {
+            margin: 0.5rem 0;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact form button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .contact form button:hover {
+            background: #3E8E41;
+        }
+        .menu{
+         display: block;
+      }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+            header nav {
+                display: none;
+            }
+
+            header .menu-icon {
+                display: block;
+            }
+
+            header .mobile-nav {
+                display: none;
+            }
+
+            header .mobile-nav.active {
+                display: block;
+            }
+            .plan-comparison{
+                display:contents;
+            }
+        
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">QuickRent</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#session1">How It Works</a>
+            <a href="#session2">Features</a>
+            <a href="#session3">Contact</a>
+            <a href="#signup" class="signup">Sign Up</a>
+        </nav>
+    
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="#">Home</a>
+            <a href="#session1">How It Works</a>
+            <a href="#session2">Features</a>
+            <a href="#session3">Contact</a>
+            <a href="#signup">Sign Up</a>
+        </div>
+
+    </header>
+
+    <section id="session1" class="hero">
+        <h1>Gadget Rentals Made Easy</h1>
+        <p>Find the latest gadgets at affordable rental prices. No hassle, no commitments.</p>
+        <button class="cta-button">Explore Rentals</button>
+    </section>
+
+    <section  class="features">
+        <div class="feature">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8mPhEmYRBEH6nYDmC5MxLgnyemyCPBbX3TA&s" alt="Wide Selection">
+            <h3>Wide Variety of Gadgets</h3>
+            <p>Choose from a variety of gadgets tailored to your needs.</p>
+        </div>
+        <div class="feature">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIPDxAQEBAPDxAPDxUVFhAQEBUPFRUWFhUVFRYYHSggGBolHRUVITEhJSkrLi4uFx8/ODMsNygtLisBCgoKDg0OGBAQGi0dHR0rLi4rLS0rLSstLS0rNysrKy0rLS0tLS0tLS0rLSstLS0tKy0tLS0tLS0tKy0tLS0tN//AABEIAL4BCQMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAABAgAFAwQGB//EAEoQAAEDAgIGBgQIDQIHAQAAAAEAAgMEERIhBQYTMUFRFCJSYXGRMoGh0hUWU1SSk7HRIyRCQ0RigoOywcLT8DOjNGR0orPh8Qf/xAAZAQEBAAMBAAAAAAAAAAAAAAAAAQIDBAX/xAAlEQEAAwABBAICAgMAAAAAAAAAAQIREgMEIVEyYTFBFDMTIoH/2gAMAwEAAhEDEQA/APXUEUFtaQQKZBApQKYpUAKVMUFUKgUUCgCUpkpRClAolKUAKUpilKIUpSmKUqhSkKYpCiFckKZyQqoUpCmKUoEKQpikKqEcsblkKxuRGNyxOWVyxOVYyxuWNyyOWNyqMZSpilVR6cgigtDrRBRRAClKZKUAKCJQVQEpRKBQBKUSgUQpSlMUpQKUCiUCiFKQpilKoQpSmKQohSsZTlIVQpSFMUhRClYynKQohCsZTlIVUI5YnLI5YnKpJCsTlkcsblWJClRclVR6egootDrBAooFBEqJQQApSmKUqoBSlMUpQAoFEoFEKUpTFKUClAolKUQpSlMUpVGNyQp3JCiLOhrC1uHgL8FtCud/gVbSnI+JWay8+bTr1IrXPw2zXHkEOnnkFp3QspyleFW9088h5KdOPILTsgR/macrHCvpuCuJ4DyU6b+q37Fp5c/DcmBV5SnCvps9N/Ub7EelDsMPqC1b/wCZoYrcz7U5z7OFfTHpwMfTSExtDmYXNIABviA+y64p67LSh/FZj3R/xhca5dvbzM1ed3URF/DGUt0zki6HK9PQUQWh1ilRQQBBFAqoBQRSlACgiUEAKBUQRAKUolKUAKUpilKIUpCmKUqhCkKcpCiNmmJseVyuc04zpOkYKOUu6MKaSocwFzBLIHYQHWzIAzt4rpKcXFu8333WlpjQUVTgc8yMkiJMUkTjHKy++zhwPJed+3q/pydU1lPLV09K8upptFzVAYH7RjJAC28ZubAhZNKyH4JoDi3y6PzvzIurnQ+p8FLI58UkrmyxOjmZJsnB9ze5IaCN5yGRupS6mU0bmEy1UkcLxJDC+Uvp2PGYIbbh3lJHPa/aQZJU9H6Q2HolO+pYS62OrJBjjH7Iv+0t/SGkRUN0TUMy21WwvH62EhzT4EHyXR0WhYYXTSAGR1RKZpDJhecW4BuWTRwCr5NUqcsEYfUMa2ofUswSYSyRwsQw2u1vd7UMlg//AEFxFCc/0im7j/qBV+suhafp1ENmbVdTP0gY5Bi6mLPrZZ8rK5+K8To3xST1czJHROO0mMpaYnFzcGIZXJz52Csa7RkU0sE7sQfTPfJHhIDbuGE4ssxZSCXM6xUx0aY62kaMDWClmiJdhc13+k/PeQ7CL77WV7q3ow00AEhD5pHGaofckumdm63cNwWzpfR0dTEYJS8MLmPu3C03aQ4Z2PELeD/8zRc8tfSp/FZv3f8AG1cc5dhpg3pZcrZx/wAYXHOXd23web3fz/4xuSp3JF0OV6bdRC6C0uoUFELqoiCiCCIKIIAUCoUCiIgogUAKUolKUAKBRKUqoUpSmKUohCkKcpUlYjZZIZ2tyJAzPis3SWdoJX6Aif1hUTNBzsNiR/3MJSnV2P53P5U/9teZlnrbTP2bpLTxHeh0llib5Xse5J8W4/nU3lT/ANtD4sx/Opvo039tMv8AS8qfbMKhl7Yh3cFHTt7Q8wsB1YZwq5vo0/8AbSnVZvzyb6NP7iZf0bT2zMqYzuc3lvATCdhGTmn1ha3xVHzuX6MHuoHVPlVv+hF9ymX9G09ttszO03zyR2zDliF9/qWidU3fO3fVsWN+qL+FX/tNP80y/o2nts6WeOjSgG4vF/GFyjlaaW0U6lDBtMe0abkDBctI3i/eFVOXo9tExTy8vu7RPU8MbkqZyVb3K9LQUQWp0oogogiCiCCIKFBEQpSilKCIKFBAClKJQKICBUugSqFKUolKUQpS/cUSl+4rG/xllT5QsoT1R4BR8wCwh9mDfuXCa16cmiqY4tuKSB0ZcZjGZQZL2wcm2GfrXn7+npz4d70oKdJHArzat05Ux0cMpnp8b6oROmjtJCYTi69uByzHcVkptMSbKqkZpGGqdDSyyBrImswvAu1xzzGRFlNljyh6Rt+8I9IC8og1nqQynkZW01TJK+FslM2Nu1aH2xC7XXBbfeQFcQawSxdPZUuBdRuMkZsG4oHNvHu355etNk5Q7/pI5odJHNed0WnKtklOype046CaqnAa1pxtNwBys2w8QpRVWlZ4WVcckH4Qh7acss3Yk7jLe4dbO+5XZOUPRW1A4FOJO9eY6W0/MyskgNZDSRsjiczHG2TE5w6wBuNy7TVqqdJTse6ZtQXYiJGNDGuFzaze7crEkTp9bvRg/e/0LmHLptbfQg3/AJ3+lcy5eh0fhDze4/sljckTuSLa0PSbqIIXWp0ipdC6CA3QuhdAlES6F0CVEEJQJUsUMJ5JpiXQKJaeSBaeRTTJKSgUSDySogFAqFAqhSlKJSlEKUPuKhQ+4rG/xll0/lDcw3aPALlNN6NrdttKZ0MkZZgkgnxbK97424Qc+d11sZ6oyG5MQOS83HqTGvN/ijUtpmsY6DbCtFY5tntpxa/UYAL4dy336Or5I54pm0TRLTyxtMe2B2jhZt8Q9HM967jCOShY3kkwnFwD9WJWR0klOY46ulZHG93WEUrAAHseQLkHOxIU1h1XfUzxStc1kZa1lW3rXfG14e0DLPMEZ24LvsDUNk1MlOMOPrdCvkrGTnDshSzU7xnju88Ba1rKtg0PpGOJtGyeJkDCA2YbQVQiBvht6N+F+S9C2Le5DYt7lMk4w4Wo0PWirlqKcUr2yxxR2m2pIwDf1RxXX6BimEQ6QIRLc3EWMR2vlbFnfmt5kY5JysogiMVetnoQfvf6VzLl0utZuyD97/SuaK9Lo/CHmdx/ZLG5Ki5KtrS9GupdLdS61N43QuggXDmEMG6BKnrHmiY3WxWy5qbC8ZISuWrtZZIpXMDQQCunJXnGnj+Mv8Vo7m0xXw6u0rFrTro4dannewea6LQWk9vmW2Xm0Dl2mpzsneK469S0z5l3X6VYjxDr7jkplyCx3TXW/Zc/GGGuthOSpaiowWNt6uaz0Cud0mch4rZymOnMtPGJ6sRKyp66M7wrCKSE8AuXhKtaVc9eraXTbpVXIiiP5IWKopGFpsAEIVsHcfBbYtLTNIc05LhJyGROQRk3nxKRy6r/ABlxdOP94T4Mrxuawjgdrb2YEPg7SHYZ9cPdVnFO7CMzu5lMKh3aPmvM4V+3r87fSq+D9IfJj61vuqCh0h8l/uxq227+Z80ekv5nzThX7Od/pUGj0h8kfrIvvQ6LpD5Bx/eQferjpL+Z87hHpL+17Srwr9pzt9KQwaR+bv8ArKb3lNlpD5tL9Ol99XfSn9r2odLf2j9qcK+5OVvUKQs0h81lP7dJ/cUEekPmsw/bpP7ivBVv7ShrJO19icK+5OVvUOa06+YbOOZpaWBxBNs8VuRtlZU7l0etjy5sBcbkiX7Wrm3L1OhnCMeP3G/5J0jkiZyRbWh6JiCmILkjpt/JbFHpCSR1gMuJXJ/nq7/493RSSgBaZJJuUB35rZpoMR7uKxvfWylOJqSDEb8ArVjrC3Dkka0AWChWtsalZDh6w9E+xeX6fd+MP8V6zfIgi4ORXmuueg3wSGZt3QyHf2Xdk/esetabVxn29IrfVXC5dlqY/wBJcPC5dfqZJm5ckfl2X/Dt8Se61g9ZWuXTrkwtYeoVzWknXwq/0o78E7wK48yk70v1MrNSvT28W9NyIq1pSqiEq1pStNG662iK2L9U+C04itlx6p8F0RLRMOce/M+KTFmPFV75Dc58SmgcS4Z8VbdzsZjCva8Z3V4zdx9qe/j5LDEct38lkXO6VZp7TQpGxuMMkzppmwsawtBL3AkekQOFvWtOPWplqgS008EtLTuqTG/Z4nxDixwcQc8li12ppJW0jWbQHp0V3MF3sFnDHexAtfecli0jq6IqatlD56qplo5Yg+QiR+ENJDGBjRx4LOMYzrMzW6wifNRVUENQ6Nscp2Lo7yehezrgHwW3JrJC0VZka9jaGRsUhOEl7nC4wAHeSQLFcv8ABMkDaCokFTVU4bT7aBzpJNhLhBbIyMD0WnLCQbW8m0hoqeb4T2cbi7p9NURtIcBK2NtyGEjPj6wmQmy6Sg1jL5o4JqSppTOCYHSYHNdYXIJaTgNuBWtTa0yyhzoNHVUzGySRFzXU4aXMNja7ws9DrG+oqImQUswjOJ1S+Zj4NllkG3HXdfKwXIaKihjbIKlmlWydJncBA2qERYXnCQGZXTCZemtJIBItcDI8DyKnl5/+kkTrta4ZYmh2YIdYi+Y4FNmoyaOsjLsgvyl+1qoHRBdDp5l2QeEv2tVMYVtjrWr4hqnoUtOy03QhJsgt0wpejq/yLp/Fo1YY8Tg3IX4nJdHRQtY2zbHmeaoJYsQsbW9SxdAZw39xP3rXWcbLRrrgWjNzg1o3kkAJ/h6kaLCeMDxXDz6Kjf6dzbIXc4rG3QcHCNm/xS15WvTj9u3drNSfOGe1YX62UQ/SG+1csNEQj80z6IWQaKj4MYP2QVjzsy4VXz9c6Afnx5O+5YJ9ctHvaY3yF7HjC4YXEWPqVSdFt5N+i1I7RwGWXk1TlZeNVLVaLIkJp5ccTutHcWcGngVZaGlqICbAFZjROH5RFu5ZI6KS+/gsJrLPVh8NVJ4NHrROl6nuWi2ik7V/BF1LL2kyTw2ptMTWs8FwPIKordIvbYxxuNt4WxJSzcHfYtd1FVfkuHsV4zibAQ6ffxhddb0Gszx+Zcq40lXwAvfuWRtPWcA3v3LHjLLYXtPrU45GF/krSHWLG0jZOvZck1laPyGn9oBB8lcAbQn1OaVY5MZivpbFriskDCHNJ5hcy+avH6M/1WP2FNTaTq2PaZKWYsB61mkkDnZZ8WPJ6DERZNYf4Fyg1ttl0Sqy5Ryj+lQ65/8AK1X1c3uJpjqw4cL+RUNuRXIu14aMjTVX1c38mIfHlg/R6kfupvcTTi68G+4X9YR9RXHnXuP5vUfVze6gdf4vkJ/oS+6mpjsc+V/JQHut61xvx+h+Rnv3Mef6VkGvMfyFSf3cvuppxdd4oC/JcoNd4/kKn6uX3VPjtF8hU/Vy+6pq8XR6b9CHwk582qpwLdZXiqiieGvYBjycLGxItkc+CXYHut6lkkeGoIk2xWzsPBNsT+r7ENaXR7Dmk6MO0bqzMaV9OCokSrtjfefvTGnHMrbbRjmthlMFF1WNphzKyCFvMrfMDVBE1DVc6FYzT57yFbmNvNMGN7lTVP0c9o/zQbTHtK56OEBThRdVWxI3m6Lqcnj/APVabEKbMIaqTRmyQ0p7/NXLowlEYQ1T7A96yiM5e1WezChiReSuLPFQscNxKsAyyYMCJqrwO33PfwRwHvKs9kCpsghqude2/wA80I3niR6r7lZ7Np5KGAdyLyaIdlkoHkcSt4RN5IOhBQ1o7Y9/kjjJ4lbgiHcjsWoa08RP88kQ+3H2LcwBTA1MOTXbL3phL3lZzGFBE1VNa8ju8rCS7gVvOjSbJVNau0em2jltCEI7EK4muh0AwGkpiQCTTQEkgEk7Nq39k3sjyC0tXv8Ag6b/AKWD/wAbVYLsxwE2TeyPIKbNvZHkE6iYE2TeyPIKbJvZHkE6iGk2Tey3yCmyb2W+QTqIE2TeyPIKbNvZHkE6CYKqp0vTRuaHFtjI+JzrdVrmsc83Nv1T4cUajS9KwsaXBxkcWtwtL9wkNzYbvwTx4hSbQULzI5xeTJjxZgAB7HMNgByecznuzyCWLV6Frg9rpAWvDm9YWaLynCMvR/Dyd/W35CzA0WmaRzA/GxodG2SzhhcGm1ri2/MZd4RdpalBaMQIe57MWE4A5jS52I2sLWPrB5FYodXIGm4xk4YwScGI7PDgJdhvkGNG+1huvmsk2gonlxcZDtHuc4XABDmuY5tgNxDjnv3Z5KYaFRpmmawvaWvs1zsIFnWGRvcdX12Wy+rgDWvLmYZHYYza+I5nq2GeQJvyF9y0zq7CdpidI7btLai5adqNwxi1shllbLfdZ/ghmGNofI0Qn8FYi7WkEFgNs24TbO+4WsRdMNK7TFGN8sW+32Z7t2Yz3ZrbimieGlpYRICWbgXAb7DuWjDq9A03/CEhjYhd26JpaWMGW4YRbjmbkrfpqRkbQ1o9EvLScyC9xc7PxKuGqyr09TxBxex4DJzTm7WtOMMElwHEXGEi1szwBQdp6ENc8QylrGmS4YyxhGO8oufRGB2+x3WBuL5Z9AxvL3OklJle5zs2DJ0Yjc0WbkCxrRz6osQbkqdXosg18zA1zS0AsLWtaXOawNc0gtDnE2N87chZgw1mslNFjxxvGzc1pu2MAhweQc3C2UbrB1icrA3F2GsEBMwZFI80/pgNjvYY7k3cMAGB3p4ScrA3F8s+r0T3F7nzF+Ya7EC5rHYw5gy9E7R++5F8iLCyfFuEDC18zG36oDmkBuMyYbOacQLjfrX8skwY5NY6ZoxYH4XE7IkRRtks7A4tMjmgYXWBxYd4te6u2saQDhAuL7m/yVb8BxjFZ8oLg9uTm9VsjsUobdtgHuzPqtawVnDE1jWsaLNa0NaOTQLAJgmyb2R5BTZN7I8gnUTDSbJvZHkFNk3sjyCdRTAmyb2R5BTZt7I8gnUVwJs28h5BTZt7I8gnUQJs29keQU2beyPIJ1EH/9k=" alt="Affordable Prices">
+            <h3>Affordable Pricing</h3>
+            <p>Access premium gadgets at a fraction of the cost.</p>
+        </div>
+        <div class="feature">
+            <img src="https://img.freepik.com/premium-vector/free-vector-fast-delivery-tag-logo-with-clock-illustration_822642-192.jpg" alt="Quick Delivery">
+            <h3>Quick Delivery</h3>
+            <p>Get your gadgets delivered to your doorstep in no time.</p>
+        </div>
+    </section>
+
+    <section class="gadget-listing">
+        <h2>Available Gadgets</h2>
+        <div class="gadget">
+            <img src="https://pngfile.net/public/uploads/preview/hp-laptop-computer-png-free-download-21567004030zgt6fuv4d3.png" alt="Laptop">
+            <div>
+                <h4>Laptop</h4>
+                <p>High-performance laptops for work and play. Starting at $15/day.</p>
+            </div>
+        </div>
+        <div class="gadget">
+            <img src="https://cdn.pixabay.com/photo/2014/08/29/14/53/camera-431119_640.jpg" alt="Camera">
+            <div>
+                <h4>Camera</h4>
+                <p>Capture every moment with top-notch cameras. Starting at $10/day.</p>
+            </div>
+        </div>
+        <div class="gadget">
+            <img src="https://t4.ftcdn.net/jpg/05/38/41/11/360_F_538411173_3xEQZN5NVZXxNs5i4sd5LtkJNuCwgzdg.jpg" alt="Gaming Console">
+            <div>
+                <h4>Gaming Console</h4>
+                <p>Experience immersive gaming with the latest consoles. Starting at $20/day.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="session2" class="plan-comparison">
+        <h2>Compare Our Plans</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Gadgets Included</th>
+                    <th>Price</th>
+                    <th>Benefits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic</td>
+                    <td>1 Gadget</td>
+                    <td>$15/day</td>
+                    <td>Standard Delivery</td>
+                </tr>
+                <tr>
+                    <td>Premium</td>
+                    <td>3 Gadgets</td>
+                    <td>$40/day</td>
+                    <td>Priority Delivery + Insurance</td>
+                </tr>
+                <tr>
+                    <td>Ultimate</td>
+                    <td>Unlimited Gadgets</td>
+                    <td>$100/day</td>
+                    <td>Express Delivery + Full Coverage</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="session3" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        &copy; 2024 QuickRent. All rights reserved.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
